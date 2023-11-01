@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Outras tags head -->
+</head>
+<body>
+    <h1>Exibição de Imagem</h1>
+    <button id="loadData">Carregar Dados</button>
+  <div id="result"></div>
+
+    <img id="imagem" src="" alt="Imagem da câmera">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ 
+    <script>
+
+document.getElementById('loadData').addEventListener('click', function() {
+      // Fazer uma solicitação Axios quando o botão for clicado
+      axios.get('/fotos')
+        .then(function (response) {
+          // Manipular a resposta da solicitação aqui
+          //document.getElementById('result').innerHTML = 'Dados da solicitação: ' + JSON.stringify(response.data);
+        })
+        .catch(function (error) {
+          // Manipular erros, se houver
+          document.getElementById('result').innerHTML = 'Erro: ' + error.message;
+        });
+    });
+
+        // JavaScript para atualizar a imagem
+        var imagem = document.getElementById('imagem');
+        setInterval(function() {
+            imagem.src = '/fotos'; // Atualize a imagem da rota '/foto'
+        }, 5000); // Atualize a cada 5 segundos (5000 ms)
+    </script>
+</body>
+</html>

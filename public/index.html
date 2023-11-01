@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Controle da ESP32-CAM</title>
+
+</head>
+<body>
+  <h1>ESP32-CAM Image Capture</h1>
+  <button id="captureButton">Capturar Foto</button>
+
+  <button id="meuBotao">Clique-me!</button>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+ const meuBotao = document.getElementById('meuBotao');
+
+function fazerRequisicaoGet() {
+    // Faça uma solicitação GET usando Axios para a rota desejada
+    axios.get('/foto')
+        .then(function (response) {
+            // A resposta da solicitação GET está em 'response.data'
+            console.log('Resposta da solicitação GET:', response.data);
+        })
+        .catch(function (error) {
+            console.error('Erro na solicitação GET:', error);
+        });
+}
+
+meuBotao.addEventListener('click', fazerRequisicaoGet);
+
+  </script>
+
+</body>
+</html>
