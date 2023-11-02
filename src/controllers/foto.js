@@ -32,7 +32,7 @@ const captura = async(req,res)=>{
 const buscaUltima = async(req,res)=>{
     //console.log("Busca Ultima - ok");
 
- const imageDirectory = path.resolve(__dirname, '../images');
+ const imageDirectory = path.join(__dirname, '../images');
  console.log(imageDirectory);
 
   fs.readdir(imageDirectory, (err, files) => {

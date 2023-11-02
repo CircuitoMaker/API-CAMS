@@ -27,7 +27,7 @@ module.exports = (server) => {
       const { format } = require('date-fns');
       // Salve a imagem em um arquivo no servidor
       const timestamp = format(new Date(), 'dd-MM-yyyy-HH_mm_ss'); // Formate a data atual no formato desejado
-      const imagePath = path.resolve(__dirname,'../images',`CAM_ID_${cameraId}_${timestamp}.jpg`); // Nome do arquivo com o ID da câmera e data formatada
+      const imagePath = path.join(__dirname,'images',`CAM_ID_${cameraId}_${timestamp}.jpg`); // Nome do arquivo com o ID da câmera e data formatada
     console.log(imagePath);
       
       fs.writeFile(imagePath, message, (err) => {
