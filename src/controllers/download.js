@@ -9,7 +9,8 @@ const path = require('path');
 const download = async(req,res)=>{
    // console.log("Download - ok");
     const imageDirectory =  path.resolve(__dirname, '../images');// Substitua pelo caminho da pasta com as imagens
-//console.log('DIR - '+ imageDirectory);
+console.log('DIR - '+ imageDirectory);
+
 // Listar os arquivos na pasta
 fs.readdir(imageDirectory, (err, files) => {
     if (err) {
