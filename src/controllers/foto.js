@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 const esp32CamSockets = require('../esp32CamSocketsModule');
-
 const serverSocket = require('../serverSocket');
 
 const captura = async(req,res)=>{
@@ -20,7 +19,6 @@ const captura = async(req,res)=>{
       console.log("flash = " + flash);
       console.log("Nova camera conectada ID = " + id);
     
-    
       // Envia a string id para todos os cliente WebSocket
       esp32CamSockets.forEach(ws => {
         ws.send(id + '-' + flash);
@@ -33,10 +31,9 @@ const captura = async(req,res)=>{
 
 const buscaUltima = async(req,res)=>{
     //console.log("Busca Ultima - ok");
-    // Substitua pelo caminho da pasta com as imagens
-    const imageDirectory = path.join(__dirname, '../images');
 
-console.log(imageDirectory);
+ const imageDirectory = path.resolve(__dirname, '../images');
+ console.log(imageDirectory);
 
   fs.readdir(imageDirectory, (err, files) => {
     if (err) {

@@ -8,8 +8,8 @@ const path = require('path');
 
 const download = async(req,res)=>{
    // console.log("Download - ok");
-    const imageDirectory =  path.join(__dirname, '../images');// Substitua pelo caminho da pasta com as imagens
-
+    const imageDirectory =  path.resolve(__dirname, '../images');// Substitua pelo caminho da pasta com as imagens
+//console.log('DIR - '+ imageDirectory);
 // Listar os arquivos na pasta
 fs.readdir(imageDirectory, (err, files) => {
     if (err) {
@@ -50,7 +50,7 @@ fs.readdir(imageDirectory, (err, files) => {
 //limpa a pasta de imagens
 const clean = async(req,res)=>{
 // caminho da pasta com as imagens
-const imageDirectory =  path.join(__dirname, '../images');
+const imageDirectory =  path.resolve(__dirname, '../images');
 
 fs.readdir(imageDirectory, (err, files) => {
   if (err) {
