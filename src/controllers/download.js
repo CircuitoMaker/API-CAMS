@@ -8,7 +8,7 @@ const path = require('path');
 
 const download = async(req,res)=>{
    // console.log("Download - ok");
-    const imageDirectory =  path.join(__dirname, '../images');; // Substitua pelo caminho da pasta com as imagens
+    const imageDirectory =  path.join(__dirname, '../images');// Substitua pelo caminho da pasta com as imagens
 
 // Listar os arquivos na pasta
 fs.readdir(imageDirectory, (err, files) => {
@@ -41,13 +41,44 @@ fs.readdir(imageDirectory, (err, files) => {
   });
 
 
-
     //return res.status(200).json({message:'ok'});
 }//fim
 
 
 
+
+//limpa a pasta de imagens
+const clean = async(req,res)=>{
+// caminho da pasta com as imagens
+const imageDirectory =  path.join(__dirname, '../images');
+
+fs.readdir(imageDirectory, (err, files) => {
+  if (err) {
+    return res.status(500).send('Erro ao listar os arquivos da pasta.');
+  }
+
+  // Iterar sobre os arquivos e excluí-los
+  files.forEach((file) => {
+    const filePath = path.join(imageDirectory, file);
+
+    // Use fs.unlink para excluir o arquivo
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error(`Erro ao excluir o arquivo ${filePath}: ${err}`);
+      } else {
+        console.log(`Arquivo ${filePath} excluído com sucesso.`);
+      }
+    });
+  });
+
+  res.status(200).send('Todos os arquivos foram excluídos.');
+});
+
+}
+
+
 //exportacao do modulo
 module.exports = {
-    download
+    download,
+    clean
 };

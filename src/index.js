@@ -10,7 +10,6 @@ app.use(express.static(path.join(__dirname, 'public'))); // Servir arquivos est√
 const startWebSocketServer = require('./serverSocket');
 startWebSocketServer(server); // Inicialize o servidor WebSocket passando o servidor HTTP
 
-
 //app.use(express.json())
 const rotas = require('./rotas')
 
